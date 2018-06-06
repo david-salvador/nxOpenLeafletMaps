@@ -1,0 +1,13 @@
+$focus-color: #4D90FE;
+
+:host {
+  background: white;
+  border-color: lightgray;
+}
+
+:host(.input-focus) {
+  border-color: $focus-color;
+  -webkit-box-shadow: 0px 0px 5px  $focus-color;
+  box-shadow: 0px 0px 5px $focus-color;
+  color: $focus-color;
+}

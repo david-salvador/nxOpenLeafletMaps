@@ -1,0 +1,30 @@
+<h1>leafletJs demo exercise</h1>
+<div class="container">
+  <div class="row justify-content-center">     
+    <div class="col-8  ">      
+      <ia-input id="address-search-field" icon="map-marker">
+          <input type="search" 
+            name="address-input" 
+            placeholder="Enter address…" 
+            autocomplete="off"
+            #addressInput
+          >
+      </ia-input>
+    </div>
+  </div>
+<!-- [leafletLayersControl]="layersControl" -->
+  <div class="row justify-content-center">
+    <div class="col-8">    
+        <div id="mappi"
+          leaflet 
+          [leafletOptions]="options"
+          
+          (leafletMapReady)="onMapReady($event)"
+        >
+        </div>
+      </div>    
+  </div>
+
+  <router-outlet></router-outlet>
+
+</div>

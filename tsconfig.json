@@ -18,6 +18,9 @@
     "paths": {
       "@ia-npm-scope/*": [
         "libs/*"
+      ],
+      "@ia-npm-scope/common/ui": [
+        "libs/common/ui/src/index.ts"
       ]
     }
   },

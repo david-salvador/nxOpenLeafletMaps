@@ -1,0 +1,28 @@
+
+:host {
+    border-width:1px;
+    border-style: solid;
+    padding: 1px 0;    
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+:host(.input-focus) {
+    outline:none;
+}
+
+:host ::ng-deep input {
+    border:none;
+    outline: none;    
+    margin: 1px 0;
+    flex-basis: 92%;
+}
+
+.icon {    
+    flex-basis: 8%;
+    padding-left: 0.5rem;    
+    border:none;
+    font-size: 1.5rem;
+}

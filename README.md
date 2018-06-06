@@ -1,3 +1,49 @@
+Requirements:
+To Develop an application where:
+1. the user can type an address into a text field and display the results on a map. 
+1.1.
+
+2. to have a chart that shows the results grouped by type.
+
+3. to be built with Angular (4, 5 or 6), 
+4. LeafletJS (for the map) 
+5. d3 (for the chart). 
+
+
+
+
+
+
+# Implementation
+1. A Nx Workspace has been used hold a suite of applications to share libraries, as a mono-repo
+2. The packages from https://github.com/Asymmetrik/ngx-leaflet have been installed to aid in this prototype
+3. a shared ui-module lib has been created to hold ui elements (meant to be shared easily among apps user, admin, etc., in the suite):
+3.1 the input-ui-component
+3.2 the map-ui-component
+3.3 the chart-ui-component
+# improvements
+1. the chart-ui-component 
+1.1 to be created as a lazy-loaded ui-lib: https://github.com/nrwl/workshop-nx-labs/blob/master/organizing-code-in-a-workspace/lab-2.md
+1.2 to appear as a modal component
+
+
+# How to run the user-portal app
+1. Clone this repository
+```
+git clone <https://....git>
+```
+
+2. Hydrate dependencies and start development server
+```
+cd <nxSuiteFolder>
+npm i
+npm run user-portal
+```
+This will start a development server at :
+`** Angular Live Development Server is listening on localhost:4201, open your browser on http://localhost:4201/ **`
+
+
+# About
 # IaNxWorkspaceName
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).

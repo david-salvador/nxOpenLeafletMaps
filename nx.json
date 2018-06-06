@@ -1,5 +1,20 @@
 {
   "npmScope": "ia-npm-scope",
   "projects": {
+    "user-portal": {
+      "tags": []
+    },
+    "user-portal-e2e": {
+      "tags": []
+    },
+    "admin-portal": {
+      "tags": []
+    },
+    "admin-portal-e2e": {
+      "tags": []
+    },
+    "common-ui": {
+      "tags": []
+    }
   }
 }
