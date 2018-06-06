@@ -1,5 +1,7 @@
 <h1>leafletJs demo exercise</h1>
+
 <div class="container">
+
   <div class="row justify-content-center">     
     <div class="col-8  ">      
       <ia-input id="address-search-field" icon="map-marker">
@@ -12,13 +14,12 @@
       </ia-input>
     </div>
   </div>
-<!-- [leafletLayersControl]="layersControl" -->
+
   <div class="row justify-content-center">
     <div class="col-8">    
         <div id="mappi"
           leaflet 
-          [leafletOptions]="options"
-          
+          [leafletOptions]="options"          
           (leafletMapReady)="onMapReady($event)"
         >
         </div>

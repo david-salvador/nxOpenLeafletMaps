@@ -1,6 +1,3 @@
-//export IaInputModule from './components/ia-input/ia-input.module';
-
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputRefDirective } from "./components/ia-input/common/input-ref.directive";
