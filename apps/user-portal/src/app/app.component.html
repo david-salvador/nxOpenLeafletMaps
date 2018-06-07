@@ -5,25 +5,31 @@
   <div class="row justify-content-center">     
     <div class="col-8  ">      
       <ia-input id="address-search-field" icon="map-marker">
-          <input type="search" 
-            name="address-input" 
-            placeholder="Enter address…" 
-            autocomplete="off"
-            #addressInput
-          >
+        <input type="search" 
+          name="address-input" 
+          placeholder="Enter address…" 
+          autocomplete="off"
+          #addressInput
+        >
       </ia-input>
     </div>
   </div>
 
   <div class="row justify-content-center">
     <div class="col-8">    
-        <div id="mappi"
-          leaflet 
-          [leafletOptions]="options"          
-          (leafletMapReady)="onMapReady($event)"
-        >
-        </div>
-      </div>    
+      <div id="mappi"
+        leaflet 
+        [leafletOptions]="options"          
+        (leafletMapReady)="onMapReady($event)"
+      >
+      </div>
+    </div>    
+  </div>
+
+  <div class="row justify-content-center" *ngIf="this.stackChartMapDataArray && this.stackChartMapDataArray.length > 0">
+    <div class="col-8">    
+      <ia-chart-stack-x-string [data]="stackChartMapDataArray"></ia-chart-stack-x-string>
+    </div>    
   </div>
 
   <router-outlet></router-outlet>

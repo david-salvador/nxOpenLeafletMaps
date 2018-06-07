@@ -15,6 +15,9 @@
     },
     "common-ui": {
       "tags": []
+    },
+    "common-d3": {
+      "tags": []
     }
   }
 }

@@ -17,12 +17,12 @@ export class OpenStreetMapApiService {
     console.log(`OpenStreetMapApiService: ${parameter}`)
   }
 
-  public getOpenStreetMapApiData$(inputAddressSearch$: Observable<string>): Observable<Place[]> {
+  public getOpenStreetMapApiData$(inputAddressSearch$: Observable<string>, limit:number): Observable<Place[]> {
 
     const returnObservable$:Observable<Place[]> = inputAddressSearch$
       .pipe(
         mergeMap((inputAddressSearch:string) => this.http.get<any>(
-          `${this.BASE_URL}?q=${inputAddressSearch}&limit=2&format=json`
+          `${this.BASE_URL}?q=${inputAddressSearch}&limit=${limit}&format=json`
         )),
               // tap((a: any) => console.log(`httpResp1 --> `, JSON.stringify(a, undefined, 2))),
         filter((arrayOfAny:any[]) => arrayOfAny.length > 0),

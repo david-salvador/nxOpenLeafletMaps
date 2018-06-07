@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { IaUiComponents, Place } from '../shared';
 import { CoreModule }     from '../core';
 
+import { IaD3Module } from '@ia-npm-scope/common/d3'; 
+
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
@@ -19,6 +21,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     IaUiComponents,
     CoreModule,
+    IaD3Module,
     LeafletModule.forRoot(),
   ],
   providers: [

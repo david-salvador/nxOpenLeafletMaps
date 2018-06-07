@@ -11,13 +11,13 @@ export class HomePageService {
 
   }
 
-  public doA(a:string){
-    this.api.doOpenStreetMapApiCall(a);
-    console.log(`HomePageService: ${a}`);
-  }
+  // public doA(a:string){
+  //   this.api.doOpenStreetMapApiCall(a);
+  //   console.log(`HomePageService: ${a}`);
+  // }
 
   public getOpenStreetMapApiData$(inputAddressSearch$:Observable<string>):Observable<any>{
-    return this.api.getOpenStreetMapApiData$(inputAddressSearch$)
+    return this.api.getOpenStreetMapApiData$(inputAddressSearch$,4)
   }
 
 }

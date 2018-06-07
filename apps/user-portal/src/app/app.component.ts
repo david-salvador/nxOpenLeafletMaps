@@ -34,7 +34,7 @@ export class AppComponent implements AfterContentInit{
     layers: [
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          maxZoom: 18,
-         attribution: '...'
+         attribution: 'dsalvador'
         })
     ],
     zoom: 5,
@@ -45,8 +45,12 @@ export class AppComponent implements AfterContentInit{
   private points:L.Point[] = [];
   private bounds:L.Bounds;
 
-  constructor( private homePageService: HomePageService ){
+  stackChartMapDataDictionary;
+  stackChartMapDataArray;
 
+  constructor( private homePageService: HomePageService ){
+  //  this.stackChartMapData1 = [{ id: 'a', duration: 2384 }, { id: 2, duration: 5485 }, { id: 3, duration: 2434 }, { id: 4, duration: 5565 }];
+   this.stackChartMapDataDictionary = {};   
   }
 
 
@@ -74,23 +78,28 @@ export class AppComponent implements AfterContentInit{
 
   private updatePageData(places:Place[]){
     //console.log(`MIAPP01 >> ok ${JSON.stringify(places, undefined, 2)} <<`);
-    const place:Place = places[0];
-    const placeLatLon:[number, number] = [place.lat, place.lon];
+    let place:Place;
+    let placeLatLon:[number, number];
     //this.mymap.setView(placeLatLon, 13);
-    L.marker(placeLatLon,{
-      icon: L.icon({
-        iconSize: [ 25, 41 ],
-        iconAnchor: [ 13, 41 ],
-        iconUrl:    'assets/images/marker-icon.png',
-        shadowUrl:  'assets/images/marker-shadow.png'
-     })
-    }).addTo(this.mymap);
+   
     for (const p of places){
-      L.popup().setLatLng([p.lat, p.lon])
-      .setContent(`${p.name}`)
-      .openOn(this.mymap);
+      placeLatLon = [p.lat, p.lon];
+
+      L.marker(placeLatLon,{
+        icon: L.icon({
+          iconSize:   [ 25, 41 ],
+          iconAnchor: [ 13, 41 ],
+          iconUrl:    'assets/images/marker-icon.png',
+          shadowUrl:  'assets/images/marker-shadow.png'
+       })
+      }).addTo(this.mymap);
+
+      // L.popup().setLatLng(placeLatLon).setContent(`${p.name}`).openOn(this.mymap);
     }
     this.updateMapBoundingBox(places);
+
+    this.updateSvgData(places);
+
   }
 
   private updateMapBoundingBox(places:Place[]){
@@ -107,6 +116,27 @@ export class AppComponent implements AfterContentInit{
     const latLngBounds: L.LatLngBounds = L.latLngBounds(L.latLng(bounds.min['x'],bounds.min['y']),L.latLng(bounds.max['x'],bounds.max['y']));
 
     this.mymap.fitBounds(latLngBounds, {pan: {animate: true, duration: 1.5, easeLinearity: 0.25}});    
+  }
+
+
+  private updateSvgData(places:Place[]){
+    for (const p of places){
+      if(this.stackChartMapDataDictionary[p.type]){
+        this.stackChartMapDataDictionary[p.type] = this.stackChartMapDataDictionary[p.type] + 1;
+      } else {
+        this.stackChartMapDataDictionary[p.type] = 1;
+      }
+    }
+    console.log(`updatedSvgData:${JSON.stringify(this.stackChartMapDataDictionary,undefined,2)}`);
+    
+    //preparing data for stack chart
+    let temporaryDataArray=[];
+    let iObject:Object;
+    for (const key of Object.keys(this.stackChartMapDataDictionary)){
+      iObject = {id:key, duration:this.stackChartMapDataDictionary[key]};
+      temporaryDataArray.push(iObject);
+    }
+    this.stackChartMapDataArray = [...temporaryDataArray];//a single update to be detected
   }
 
   private handleError(error:any){
