@@ -73,11 +73,18 @@ export class AppComponent implements AfterContentInit{
   }
 
   private updatePageData(places:Place[]){
-    console.log(`MIAPP01 >> ok ${JSON.stringify(places, undefined, 2)} <<`);
+    //console.log(`MIAPP01 >> ok ${JSON.stringify(places, undefined, 2)} <<`);
     const place:Place = places[0];
     const placeLatLon:[number, number] = [place.lat, place.lon];
     //this.mymap.setView(placeLatLon, 13);
-    //L.marker(placeLatLon).addTo(this.mymap).bindPopup(place.name).openPopup();
+    L.marker(placeLatLon,{
+      icon: L.icon({
+        iconSize: [ 25, 41 ],
+        iconAnchor: [ 13, 41 ],
+        iconUrl:    'assets/images/marker-icon.png',
+        shadowUrl:  'assets/images/marker-shadow.png'
+     })
+    }).addTo(this.mymap);
     for (const p of places){
       L.popup().setLatLng([p.lat, p.lon])
       .setContent(`${p.name}`)

@@ -24,7 +24,8 @@
             "tsConfig": "apps/user-portal/tsconfig.app.json",
             "assets": [
               "apps/user-portal/src/favicon.ico",
-              "apps/user-portal/src/assets"
+              "apps/user-portal/src/assets",
+              {"glob":"**/*", "input": "./node_modules/leaflet/dist/images", "output": "/assets/images"}
             ],
             "styles": [
               "apps/user-portal/src/styles.scss",
@@ -84,7 +85,8 @@
             "scripts": [],
             "assets": [
               "apps/user-portal/src/favicon.ico",
-              "apps/user-portal/src/assets"
+              "apps/user-portal/src/assets",
+              {"glob":"**/*", "input": "./node_modules/leaflet/dist/images", "output": "/assets/images"}
             ]
           }
         },

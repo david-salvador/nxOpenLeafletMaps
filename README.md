@@ -15,7 +15,7 @@ To Develop an application where:
 
 
 # Implementation
-1. A Nx Workspace has been used hold a suite of applications to share libraries, as a mono-repo
+1. A Nx Workspace has been used to sustain a suite of applications that share libraries, as a mono-repo
 2. The packages from https://github.com/Asymmetrik/ngx-leaflet have been installed to aid in this prototype
 3. a shared ui-module lib has been created to hold ui elements (meant to be shared easily among apps user, admin, etc., in the suite):
 3.1 the input-ui-component
